@@ -1,4 +1,8 @@
-import { ADD_TODO, DELETE_TODO } from "../actionTypes/actionTypes";
+import {
+    ADD_TODO,
+    DELETE_TODO,
+    COMPLETE_TODO,
+} from "../actionTypes/actionTypes";
 const initialState = {
     todos: [
         {
@@ -35,6 +39,27 @@ const todoReducer = (state = initialState, action) => {
                     ...state.todos.filter((t) => t.id !== action.payload.id),
                 ],
             };
+        case COMPLETE_TODO:
+            state.todos.map((todo) => {
+                    if (todo.id === action.payload.id) {
+                        console.log("DAA");
+                        return {
+                            ...state,
+                            isCompleted: true,
+                        };
+                    }
+                })
+            // return {
+            //     ...state,
+            //     ...state.todos.map((todo) => {
+            //         if (todo.id === action.payload.id) {
+            //             return {
+            //                 ...todo,
+            //                 isCompleted: true,
+            //             };
+            //         }
+            //     }),
+            // };
         default:
             return state;
     }

@@ -16,7 +16,7 @@ const TodoForm = () => {
             dispatch({
               type: ADD_TODO,
               payload: {
-              title: todo
+                title: todo
           }})
           setTodo('')
         }
